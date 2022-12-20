@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @date: 2022-12-07 19:56
  */
 @Configuration
-@Component
+//@Component
 public class MongoDBConfig {
     @Bean
     public MongoClient mongoClient() {

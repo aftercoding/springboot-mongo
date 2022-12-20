@@ -18,17 +18,23 @@ import org.springframework.test.context.junit4.SpringRunner;
 //@SpringBootTest
 public class MongoTemplateTest extends SpringBootMongodbDemoApplicationTests {
 
-//    private final MongoTemplate mongoTemplate;
-//
-//    @Autowired
-//    public MongoTemplateTest(MongoTemplate mongoTemplate) {
-//
-//        this.mongoTemplate = mongoTemplate;
-//    }
-//
-//    @Test
-//    public  void  testCreateCollection(){
-//        mongoTemplate.createCollection("products");
-//    }
+    private final MongoTemplate mongoTemplate;
+    @Autowired
+    public MongoTemplateTest(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
+    @Test
+    public  void  testCreateCollection(){
+        if(!mongoTemplate.collectionExists("orders")){
+            mongoTemplate.createCollection("orders");
+        }
+    }
+
+    @Test
+    public  void  testDropCollection(){
+        if(mongoTemplate.collectionExists("orders")){
+            mongoTemplate.dropCollection("orders");
+        }
+    }
 }
